@@ -6,14 +6,36 @@ if __name__ == '__main__':
     print("Split ..")
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--path', nargs=1, type=str, default="./input.csv", required=False)
-    parser.add_argument('--column', nargs=2, type=str, default="miRNAs/precursors", required=False)
+    parser.add_argument(
+        '--path',
+        type=str,
+        default="./input.csv",
+        required=True,
+        help="relative/absolute path to a csv file",
+        dest="path"
+        )
+    
+    parser.add_argument(
+        '--column',
+        type=str,
+        default="miRNAs/precursors",
+        help="Column to split",
+        dest="column"
+        )
+    
+    parser.add_argument(
+        '--separator',
+        type=str,
+        default=";",
+        help="Separator character for split",
+        dest="separator"
+        )
+    
     args = parser.parse_args()
 
     # Configuration
-    file_path= args.path[0]
+    file_path= args.path
     output_file_path=f"{file_path}_split.csv"
-    miRNAs_column=args.column[0]
     base_id = 1 # Excel is 1-based
 
     # Load CSV as a pandas DataFrame
@@ -25,21 +47,21 @@ if __name__ == '__main__':
     print("Transform data ..")
     data_split = dict()
     next_id = 0
-    for [id, original_value] in dataframe.to_dict("index").items():
+    for [id, original_row] in dataframe.to_dict("index").items():
 
         # Split the miRNAs column
-        miRNAs: str = original_value[miRNAs_column]
-        miRNAs_split = miRNAs.replace(' ', '').split(';')
-        split_count = len(miRNAs_split)
+        value: str = original_row[args.column]
+        split_values = value.split(args.separator)
+        split_count = len(split_values)
         is_split = split_count > 1
 
-        for miRNA in miRNAs_split:
+        for each_split_value in split_values:
 
             # Copy original values
-            new_values = dict(original_value)
+            new_values = dict(original_row)
 
-            # Overwrite miRNA cell
-            new_values[miRNAs_column] = miRNA
+            # Overwrite cell with a single value
+            new_values[args.column] = each_split_value
 
             # Add extra columns
             new_values['original_id'] = base_id + id # this is the line id from the source csv
