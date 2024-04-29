@@ -3,8 +3,6 @@ import argparse;
 
 if __name__ == '__main__':
 
-    print("Split ..")
-
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '--path',
@@ -32,6 +30,8 @@ if __name__ == '__main__':
         )
     
     args = parser.parse_args()
+
+    print("Split ..")
 
     # Configuration
     file_path= args.path
