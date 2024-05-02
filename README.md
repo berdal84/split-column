@@ -1,5 +1,29 @@
 # Split CSV Column
 
+This is a small Python script to split a given column from a CSV.
+
+Example:
+
+By running the command `python main.py --path films.csv --column Version`.
+
+It can convert this file:
+
+| Title    | Version |
+| -------- | ------- |
+| Matrix   | 1;2;3;4 |
+
+Into this file:
+
+| Month    | Savings |
+| -------- | ------- |
+| Matrix   | 1       |
+| Matrix   | 2       |
+| Matrix   | 3       |
+| Matrix   | 4       |
+
+Limitations:
+- If does not handle multiple columns (but could be easily implemented if needed)
+
 ## How to install ?
 
 Download and unzip this repository
