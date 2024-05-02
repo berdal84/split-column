@@ -31,7 +31,7 @@ Download and unzip this repository
 Make sure [python](https://www.python.org/) is installed:
 
 ```
-python
+python --version
 ```
 
 Create a virtual environment to install the project:
