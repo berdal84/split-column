@@ -14,7 +14,7 @@ It can convert this file:
 
 Into this file:
 
-| Month    | Savings |
+| Title    | Version |
 | -------- | ------- |
 | Matrix   | 1       |
 | Matrix   | 2       |
