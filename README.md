@@ -4,17 +4,15 @@ This is a small Python script to split a given column from a CSV.
 
 Example:
 
-By running the command `python main.py --path films.csv --column Version`.
+Let's consider the example file `csv/example/example_01.csv`:
 
-It can convert this file:
-
-| Title    | Version |
+| title    | version |
 | -------- | ------- |
 | Matrix   | 1;2;3;4 |
 
-Into this file:
+By running the command `python main.py -i "csv/example/example_01.csv" -c "version"`, we can generate a new file `csv/example/example_01_output.csv` with the following content:
 
-| Title    | Version |
+| title    | version |
 | -------- | ------- |
 | Matrix   | 1       |
 | Matrix   | 2       |
@@ -82,4 +80,4 @@ To run *the* single test, run the command:
 pytest
 ```
 
-This will process the file `./file/example.csv` for the column `version`, and compare the output with an expected file (`./file/example_expected_split`)
+The script will process all the files present in `csv/pytest/input` and generate a split version for each of them into `csv/pytest/output`. Once done, expected files in `csv/pytest/expected` are compared to the output to ensure program produces the correct result.

@@ -1,27 +1,38 @@
-
-from app import App
+from src.App import App
 import filecmp
 
-def test_example(mocker):
+CSV_PYTEST_PATH = "csv/pytest"
+CSV_INPUT = f"{CSV_PYTEST_PATH}/input"
+CSV_OUTPUT = f"{CSV_PYTEST_PATH}/output"
+CSV_EXPECTED = f"{CSV_PYTEST_PATH}/expected"
 
-    example = "./files/example.csv"
-    example_split = example.replace(".csv", "_split.csv")
-    example_expected_split = example.replace(".csv", "_expected_split.csv")
+app = App()
+    
+def test_01_single_column():
+    split_and_compare("test_01_single_column.csv")
 
-    mocker.patch(
-        "sys.argv",
-        [
-            "main-test",
-            "--path", example,
-            "--column", "version",
-        ],
-    )
+def test_02_two_columns():
+    split_and_compare("test_02_two_columns.csv" )
 
-    app = App()
-    app.init()
+def split_and_compare(test_file_name: str):
+
+    input=f"{CSV_INPUT}/{test_file_name}"
+    output=f"{CSV_OUTPUT}/{test_file_name}"
+    expected=f"{CSV_EXPECTED}/{test_file_name}"
+    
+    # First we try using long argument names
+    app.init(["--input", input, "--output", output, "--column", "version"])
     app.run()
 
-    same = filecmp.cmp(example_split, example_expected_split, shallow=False)
+    same = filecmp.cmp(output, expected, shallow=False)
     if not same:
-        raise Exception("File differs")
+        raise Exception(f"Files {output} and {expected} differs")
     
+    # Then with short argument names
+    app.init(["-i", input, "-o", output, "-c", "version"])
+    app.run()
+
+    same = filecmp.cmp(output, expected, shallow=False)
+    if not same:
+        raise Exception(f"Files {output} and {expected} differs")
+
