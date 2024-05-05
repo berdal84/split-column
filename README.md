@@ -25,7 +25,7 @@ By running the command `python main.py --input csv/example/example_01.csv --colu
 
 Download and unzip this repository
 
-Make sure [python](https://www.python.org/) is installed:
+Make sure [python](https://www.python.org/) (>= 3.10) is installed:
 
 ```
 python --version
