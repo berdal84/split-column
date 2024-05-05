@@ -1,3 +1,5 @@
+[![pytest](https://github.com/berdal84/split-column-csv/actions/workflows/pytest.yml/badge.svg)](https://github.com/berdal84/split-column-csv/actions/workflows/pytest.yml)
+
 # Split Column CSV
 
 This is a small Python script to split a given column from a CSV.
