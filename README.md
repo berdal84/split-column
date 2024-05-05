@@ -10,7 +10,7 @@ Let's consider the example file `csv/example/example_01.csv`:
 | -------- | ------- |
 | Matrix   | 1;2;3;4 |
 
-By running the command `python main.py -i "csv/example/example_01.csv" -c "version"`, we can generate a new file `csv/example/example_01_output.csv` with the following content:
+By running the command `python main.py --input csv/example/example_01.csv --columns version`, we can generate a new file `csv/example/example_01_output.csv` with the following content:
 
 | title    | version |
 | -------- | ------- |
@@ -19,8 +19,7 @@ By running the command `python main.py -i "csv/example/example_01.csv" -c "versi
 | Matrix   | 3       |
 | Matrix   | 4       |
 
-Limitations:
-- If does not handle multiple columns (but could be easily implemented if needed)
+> Did you know? You can specify multiple columns by separating them using colons (ex: `--columns col1,col2,col3`)
 
 ## How to install ?
 
