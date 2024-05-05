@@ -1,4 +1,4 @@
-# Split CSV Column
+# Split Column CSV
 
 This is a small Python script to split a given column from a CSV.
 
