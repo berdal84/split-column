@@ -21,7 +21,7 @@ By running the command `python main.py --input csv/example/example_01.csv --colu
 | Matrix   | 3       |
 | Matrix   | 4       |
 
-> Did you know? You can specify multiple columns by separating them using colons (ex: `--columns col1,col2,col3`)
+> Did you know? You can specify multiple columns by separating them using a comma, example: `--columns col1,col2,col3`.
 
 ## How to install ?
 
